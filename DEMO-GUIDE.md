@@ -7,11 +7,11 @@ Run-of-show for the entire episode. Bullet talking points + exact commands. Have
 ## Prerequisites (do before recording)
 
 1. Claude Code installed and logged in
-2. Status line configured (see Act 1 below)
+2. Clear status line configuration
 3. Browser tabs open:
-   - `https://www.claudecodeschool.com/` (without frontend design skill)
-   - `https://www.claudecodeschool.com/advanced-cc` (with frontend design skill)
-   - `https://skills.sh/vercel-labs/skills/find-skills`
+  - `https://www.claudecodeschool.com/` (without frontend design skill)
+  - `https://www.claudecodeschool.com/advanced-cc` (with frontend design skill)
+  - `https://skills.sh/vercel-labs/skills/find-skills`
 4. Separate terminal window ready for skills.sh installs
 5. Python 3 with pandas, matplotlib, seaborn installed
 6. Puppeteer installed (`npm install puppeteer` in the demo repo)
@@ -52,6 +52,7 @@ show model name, folder name (not full path), and context usage as a 10-characte
 - This bar is why I started taking context management seriously
 - When you can SEE it filling up, you stop treating every conversation like it's infinite
 - Smart zone model: 0-40% = sharp, 40-60% = degrading, 80%+ = hallucinations
+- /context helps you see where you are at
 
 ### Sub-Agent Comparison
 
@@ -63,7 +64,7 @@ show model name, folder name (not full path), and context usage as a 10-characte
 **Round 1 — the bad way (don't delegate):**
 
 ```
-Research the top 5 Claude Code tips from Reddit this week
+Use webfetch to research the top 5 Claude Code tips from Reddit this week
 ```
 
 - Watch the status bar jump — point it out
@@ -72,7 +73,7 @@ Research the top 5 Claude Code tips from Reddit this week
 **Round 2 — the good way (delegate):**
 
 ```
-Spin up an agent to research the top 5 Claude Code tips from Reddit this week and just give me the summary
+Spin up an agent to use websearch and webfetch research the top 5 Claude Code tips from Reddit this week and just give me the summary
 ```
 
 - Status bar barely moves — point at the difference
@@ -120,9 +121,9 @@ Help me figure out the right pricing tier structure for this product
 - "People say AI makes generic designs. Here's what Claude Code builds by default..."
 
 Show two tabs side by side:
+
 - **Without skill:** `https://www.claudecodeschool.com/`
 - **With skill:** `https://www.claudecodeschool.com/advanced-cc`
-
 - Without: light blue, plain card, basic form, default fonts — looks like a template
 - With: dark theme, orange accents, terminal-style input, stats row, topic chips — completely different
 - Same tool, same prompt style, dramatically different output
@@ -146,7 +147,13 @@ open ~/.claude/plugins/marketplaces/claude-plugins-official/plugins/frontend-des
 - No AI call, just keyword matching against your installed skills
 - When it matches, it nudges Claude to evaluate whether to activate the skill
 
-Demo it live — type a natural prompt (don't use the slash command):
+**Enable the hook first** (it's disabled by default — paste this):
+
+```
+Add a UserPromptSubmit hook to .claude/settings.json that runs: python3 $CLAUDE_PROJECT_DIR/.claude/hooks/skill-activator.py
+```
+
+Now demo it — type a natural prompt (don't use the slash command):
 
 ```
 make me a slide for the title of this talk
@@ -242,6 +249,7 @@ npx skills add mindrally/skills --skill data-analysis-jupyter -y
 - This is the trust problem. Jupyter notebooks solve it.
 
 **What Jupyter notebooks are (quick):**
+
 - Code cells + text cells + output cells — all in one document
 - Think of it as a spreadsheet where you can see all the formulas AND the reasoning
 - The code that produced every number is right there, visible, runnable
@@ -280,6 +288,7 @@ Show me a correlation heatmap of all the numeric columns — satisfaction, featu
 - "The people demanding enterprise features aren't your promoters. They're a completely different population. If you built enterprise to make your best customers happy, you'd be solving for the wrong people."
 
 **The trust point:**
+
 - "I didn't write any of this code. But I can see every step — the markdown explaining what we're doing, the code cell, the chart right below it."
 - "That's the audit trail. You're not trusting Claude's answer. You're trusting the code that produced the answer."
 - "Send this notebook to your data team. They can verify every number in 5 minutes."
@@ -344,10 +353,13 @@ Open the file explorer / `ls` — walk through:
 ## Wrap (~3 min)
 
 Quick summary:
+
 - "Context management — learn to direct the work, not just watch it"
 - "Skills — teach Claude Code to do things your way, from just a prompt to tools that check their own work"
 - "Jupyter notebooks — trust the output by seeing the work"
 - "The OS — make it all compound"
 
 Where to start:
+
 - "CLAUDE.md. Spend 30 minutes writing down who you are, what you own, and how you work. Everything else builds on that."
+
