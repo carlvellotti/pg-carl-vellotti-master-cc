@@ -60,11 +60,12 @@ show model name, folder name (not full path), and context usage as a 10-characte
 - When you ask Claude Code to do a task, it will just sometimes it will be smart about using its sub-agents, but oftentimes if it's just a straight task, it will do it on its own.
 - The biggest technique for managing context: sub-agents
 - The framework: "Does the main session need all the details, or just the output?"
+- OR – would this be better in a fresh session?
 
 **Round 1 — the bad way (don't delegate):**
 
 ```
-Use webfetch to research the top 5 Claude Code tips from Reddit this week
+Research the top 5 Claude Code tips from this week
 ```
 
 - Watch the status bar jump — point it out
@@ -73,7 +74,7 @@ Use webfetch to research the top 5 Claude Code tips from Reddit this week
 **Round 2 — the good way (delegate):**
 
 ```
-Spin up an agent to use websearch and webfetch research the top 5 Claude Code tips from Reddit this week and just give me the summary
+Spin up an agent to research the top 5 Claude Code tips from this week and give me the summary
 ```
 
 - Status bar barely moves — point at the difference
@@ -87,7 +88,7 @@ Spin up an agent to use websearch and webfetch research the top 5 Claude Code ti
 - Show a live example — give it something ambiguous:
 
 ```
-Help me figure out the right pricing tier structure for this product
+Use your AskUserQuestions tool to help me decide if any of that is worth implementing here
 ```
 
 - Watch it ask clarifying questions: who's the target customer? what's the current model? what are the goals?
@@ -131,7 +132,7 @@ Show two tabs side by side:
 Open the actual SKILL.md on screen:
 
 ```bash
-open ~/.claude/plugins/marketplaces/claude-plugins-official/plugins/frontend-design/skills/frontend-design/SKILL.md
+open ~/.claude/plugins/marketplaces/claude-plugins-official/plugins/frontend-design/skills/frontend-design/SKILL.md in my file viewer here in cursor
 ```
 
 - It's 42 lines of markdown. No code. No dependencies. No build step.
