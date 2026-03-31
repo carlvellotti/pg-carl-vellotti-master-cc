@@ -35,8 +35,8 @@ This repo is a fully functional Claude Code workspace. Open it in Claude Code an
 ### Quick Start
 
 ```bash
-git clone https://github.com/carlvellotti/pg-ep-3-demo.git
-cd pg-ep-3-demo
+git clone https://github.com/carlvellotti/pg-carl-vellotti-master-cc.git
+cd pg-carl-vellotti-master-cc
 claude
 ```
 
